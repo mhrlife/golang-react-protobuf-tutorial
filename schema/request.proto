@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package protogen;
+option go_package = "internal/schema";
+
+
+message PingRequest {
+  string  name = 1;
+}
+
+message PingResponse {
+  string name = 1;
+}
+
+
+message GetMeRequest {}
+
+message GetMeResponse{
+  message User {
+    int32 id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string username = 4;
+    string language_code = 5;
+  }
+
+  User user = 1;
+  bool isActive = 2;
+}
+
+
+message Request {
+  oneof request {
+    PingRequest ping = 1;
+    GetMeRequest getMe = 2;
+  }
+}
+
+message Response {
+  oneof response {
+    PingResponse ping = 1;
+    GetMeResponse getMe = 2;
+  }
+}
