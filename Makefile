@@ -5,6 +5,8 @@ dependencies:
 	go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 	go get google.golang.org/protobuf
 	npm install ts-proto
+	go install github.com/srikrsna/protoc-gen-gotag@latest
+
 
 proto-ts:
 	protoc \
@@ -14,4 +16,4 @@ proto-ts:
 		./schema/*.proto
 
 proto-go:
-	protoc --go_out=. ./schema/*.proto
+	protoc --gotag_out=. ./schema/*.proto

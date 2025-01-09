@@ -3,9 +3,12 @@ syntax = "proto3";
 package protogen;
 option go_package = "internal/schema";
 
+import "tagger/tagger.proto";
 
 message PingRequest {
-  string  name = 1;
+  string  name = 1 [
+    (tagger.tags) = "validate:\"required\""
+  ];
 }
 
 message PingResponse {
